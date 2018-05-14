@@ -1,0 +1,33 @@
+.btn-margin {
+  margin: 3px 3px;
+}
+#cornerLogo {
+  height: 12rem;
+  margin-left: 0%;
+}
+body {
+  /* background-image: url("./Images/background.jpg"); */
+  background-color: #AFAFAF
+}
+#topBarBackground {
+  background-color: #757575;
+}
+.button-to-bottom {
+  position: relative;
+  /* top: 7rem;  */
+} 
+.card-margin {
+  margin: 2% 10% 0% 10%;
+}
+.small-image {
+  width: 80%;
+  height: auto;
+  float: right;
+}
+.heading-text {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.weekday-text {
+  margin-left: 75%;
+}
