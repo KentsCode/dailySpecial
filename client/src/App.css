@@ -20,7 +20,7 @@ body {
   margin: 2% 10% 0% 10%;
 }
 .small-image {
-  width: 80%;
+  width: 50%;
   height: auto;
   float: right;
 }
@@ -30,4 +30,10 @@ body {
 }
 .weekday-text {
   margin-left: 75%;
+}
+.search-form {
+  text-align: center;
+}
+.search-label {
+  font-weight: bold;
 }

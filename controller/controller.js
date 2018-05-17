@@ -4,8 +4,9 @@ const db = require("../models");
 module.exports = {
     find: function(req, res) {
         //console.log("from Controller !  " + JSON.stringify(req));
-        db.regularSpecial
-            .find(req);
+        db.accountSchema
+            .find({})
+            .then(dbModel => res.json(dbModel));
             //finish filling out your query to the database;
             //use .get to put variables in the url and return results accordingly
     },
@@ -32,12 +33,8 @@ module.exports = {
     mySpecials: function(req, res) {
         console.log("finding my specials.")
         db.regularSpecial
-            .find({nickname: "kentmbox42"}, function (err, returnedSpecials) {
-                //console.log("returned specials " + returnedSpecials);
-                //res.send(returnedSpecials);
-                console.log("res   " +res);
-            })
-            //.then(dbModel => res.json(dbModel))
+            .find({nickname: "kentmbox42"})
+            .then(dbModel => res.json(dbModel));
             //.catch(err => res.status(422).json(err));
             //.then(res.send(returnedSpecials));
             

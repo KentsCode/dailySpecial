@@ -2,9 +2,12 @@ const path = require("path");
 const router = require("express").Router();
 const controller = require("../controller/controller")
 
-router.post("/search", (req, res) => {
-    //console.log("searched!" + req.body);
-    controller.find(req.body);
+router.route("/api/search/:zip")
+    .get(function(req, res) {
+
+        controller.find(req, res);
+        console.log(req.body);
+        console.log("from router search ", req.body);
 });
 
 router.post("/api/venueLogin", (req, res) => {
@@ -21,9 +24,9 @@ router.post("/api/account", function (req, res) {
     //console.log(req.body);
     controller.createAccount(req.body);
 })
-router.route("/api/mySpecials")
+router.route("/api/mySpecials/:nickname")
     .get(function (req, res) {
-        controller.mySpecials();
+        controller.mySpecials(req, res);
         console.log("from router  "+ res);
     })
 
