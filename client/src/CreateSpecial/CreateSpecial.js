@@ -97,7 +97,7 @@ class createSpecial extends React.Component {
     render() {
         return (
             <div>
-                <div>
+                <div className="card offset-md-3">
                     <header>
                         <h1>Submit your specials here</h1>
                     </header>

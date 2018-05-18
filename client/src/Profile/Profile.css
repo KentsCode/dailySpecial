@@ -6,3 +6,9 @@
 .panel-body h3 {
   margin-top: 0;
 }
+.panel-dark {
+  background-color: #1d1d1d;
+}
+.transparent-background {
+  opacity: 50%;
+}

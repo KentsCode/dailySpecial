@@ -61,42 +61,56 @@ class Profile extends Component {
     return (
       <div className="container">
         <div className="profile-area">
-          <h1>Welcome {profile.name}.</h1>
-          <Panel header="Profile">
-            <img src={profile.picture} alt="profile" />
-            <div>
-              <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
-              <h3>{profile.nickname}</h3>
-            </div>
-            {/* Above is info from Auth0. Below is submit form. Nickname key is auto-added */}
-            <div>
-                <header>
-                    <h1>Verify your info here</h1>
-                </header>
-                <form onSubmit={this.handleSubmit} className="accountSubmit">
-                    <label>Restaurant Name
-                        <input type="text" className="restaurantNameInput" name="restaurantName" onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <label>Street Address
-                        <input type="text" className="streetAddressInput" name="streetAddress" onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <label>City
-                        <input type="text" className="cityInput" name="city" onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <label>State
-                        <input type="text" className="stateInput" name="state" onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <label>Zip
-                        <input type="text" className="zipInput" name="zip" onChange={this.handleChange}/>
-                    </label>
-                    <br />
-                    <br />
-                    <button type="submit" className="btn-primary btn-margin" >Go to my specials</button>
-                </form>
+          <h1 className="text-light">Welcome {profile.name}.</h1>
+          <Panel className="panel-dark text-light" header="Profile">
+            <div className="transparent-background">
+              <div className="row">
+                <img src={profile.picture} alt="profile" />
+                <div>
+                  <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
+                  <h3>{profile.nickname}</h3>
+                </div>
+              </div>
+              {/* Above is info from Auth0. Below is submit form. Nickname key is auto-added */}
+              <div>
+                <div className="row">
+                  <header>
+                      <h1>Enter your info here</h1>
+                  </header>
+                </div>
+                
+                  <form onSubmit={this.handleSubmit} className="accountSubmit">
+                  <div className="row">
+                    <div className="col-5">
+                      <label>Restaurant Name
+                          <input type="text" className="restaurantNameInput" name="restaurantName" onChange={this.handleChange}/>
+                      </label>
+                      <br />
+                      <label>Street Address
+                          <input type="text" className="streetAddressInput" name="streetAddress" onChange={this.handleChange}/>
+                      </label>
+                    </div>
+                    <div className="col-5">
+                      <br />
+                      <label>City
+                          <input type="text" className="cityInput" name="city" onChange={this.handleChange}/>
+                      </label>
+                      <br />
+                      <label>State
+                          <input type="text" className="stateInput" name="state" onChange={this.handleChange}/>
+                      </label>
+                      <br />
+                      <label>Zip
+                          <input type="text" className="zipInput" name="zip" onChange={this.handleChange}/>
+                      </label>
+                      <br />
+                      <br />
+                    </div>
+                      <br />
+                      <button type="submit" className="btn-primary btn-margin" >Go to my specials</button>
+                    </div>
+                  </form>
+              </div>
             </div>
           </Panel>
         </div>
