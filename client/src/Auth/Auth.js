@@ -37,6 +37,7 @@ export default class Auth {
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
+
     });
   }
 
@@ -85,5 +86,8 @@ export default class Auth {
     // access token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
+  }
+  componentDidMount() {
+    history.replace('/home');
   }
 }

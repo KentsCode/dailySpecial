@@ -7,7 +7,8 @@ class Home extends Component {
     super(props);
     this.state = {
       locale: '',
-      day: ''
+      day: '',
+      restaurants: {}
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,22 +21,27 @@ class Home extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    //this.setState({locale: event.target.value, day: event.target.value});
     console.log('Submit went here!  Day is ' + this.state.day + '  Locale: ' + this.state.locale);
     fetch(
       axios.get("http://localhost:3001/api/search", {
-        locale: this.state.locale,
-        day: this.state.day
-      })
+        params: {
+          locale: this.state.locale,
+          day: this.state.day
+        }
+      }).then((response)=> {
+        console.log("from home.js", response.data);
+        this.setState({restaurants: response.data})
+        console.log(this.state);
+      } 
     )
-      .then(data => console.log("home.js   ",data)
+      
     );
+    console.log(this.state);
   }
   login() {
     this.props.auth.login();
   }
   render() {
-    //const { isAuthenticated } = this.props.auth;
     return (
       <div>
         <div className="App">
@@ -59,16 +65,24 @@ class Home extends Component {
         </div>
         
         <div>
-          <div className="card card-margin">
-            <div className="card-header heading-text">Restaurant Name</div>
-            <div className="row">
-              <h5 className="col-7 card-text">Special</h5>
-              <div className="col-1 card-text">Price</div>
-              <div className="col-4">
-                <img src={require("../Images/logo.png")} className="img-rounded img-responsive small-image" id="Panel_Image" alt="didnt load"/>
+        {this.state.restaurants.length ? (
+          <div>
+            {this.state.restaurants.map(restaurant =>
+              <div key={restaurant._id}>
+                <div className="card card-margin">
+                <div className="card-header heading-text">{restaurant.nickname}
+                </div>
+                <div className="row">
+                  <h3 className="col-6 card-text">{restaurant.description}</h3>
+                  <h3 className="col-2 card-text">Price: ${restaurant.price}</h3>
+                </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
+        ) : (
+          <h3 className="offset-md-3">Enter a zip code and select a day to find your specials</h3>
+        )}
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+mongoose.Promise = Promise;  
 
 const accountSchema = new Schema({
     restaurantName: { type: String, required: true},

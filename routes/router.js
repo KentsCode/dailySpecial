@@ -2,12 +2,10 @@ const path = require("path");
 const router = require("express").Router();
 const controller = require("../controller/controller")
 
-router.route("/api/search/:zip")
+router.route("/api/search/")
     .get(function(req, res) {
-
         controller.find(req, res);
-        console.log(req.body);
-        console.log("from router search ", req.body);
+        console.log("from router search ");
 });
 
 router.post("/api/venueLogin", (req, res) => {

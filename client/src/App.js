@@ -14,6 +14,9 @@ class App extends Component {
   logout() {
     this.props.auth.logout();
   }
+  componentDidMount() {
+    this.props.history.replace('/home');
+  }
 
   render() {
     const { isAuthenticated } = this.props.auth;
