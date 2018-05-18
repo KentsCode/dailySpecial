@@ -29,20 +29,20 @@ class App extends Component {
               <img id="cornerLogo" src={require("./Images/logo.png")} alt="daily special logo"/>
             </Navbar.Header>
             <Navbar.Header className="col-5">
-              <h3 className="">Your Specials For (Weekday)</h3>
+              <h3 className="top-center-text">Your Specials For (Weekday)</h3>
             </Navbar.Header>
             <Navbar.Header className="col-2">
-                <Button
-                  bsStyle="primary"
+                {/* <Button
+                  bsStyle="light"
                   className="btn-margin button-to-bottom"
                   onClick={this.goTo.bind(this, 'home')}
                 >
                   Home
-                </Button>
+                </Button> */}
                 {
                   !isAuthenticated() && (
                       <Button
-                        bsStyle="primary"
+                        // bsStyle="light"
                         className="btn-margin button-to-bottom"
                         onClick={this.login.bind(this)}
                       >
@@ -53,7 +53,7 @@ class App extends Component {
                 {
                   isAuthenticated() && (
                       <Button
-                        bsStyle="primary"
+                        //bsStyle="light"
                         className="btn-margin"
                         onClick={this.goTo.bind(this, 'profile')}
                       >
@@ -64,7 +64,7 @@ class App extends Component {
                 {
                   isAuthenticated() && (
                       <Button
-                        bsStyle="primary"
+                        //bsStyle="light"
                         className="btn-margin"
                         onClick={this.logout.bind(this)}
                       >

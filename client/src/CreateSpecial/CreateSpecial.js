@@ -146,7 +146,7 @@ class createSpecial extends React.Component {
                             )}
                         </div>
                             ) : (
-                                <h3 className="offset-md-4">Enter a zip code and select a day to find your specials</h3>
+                                <h3 className="offset-md-4">Welcome to DailySpecial! Enter your first special to get started.</h3>
                     )}
                 </div>
             </div>

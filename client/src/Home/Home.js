@@ -45,24 +45,26 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="App offset-md-4">
-          <form onSubmit={this.handleSubmit} className="search-form">
-            <label className="search-label">
-              Location: (City, State or Zip)
-              <input type="text" className="locale" name="locale" onChange={this.handleChange}/>
-            </label>     
-            <select name="day" onChange={this.handleChange}>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
-            </select>
-            <br/> 
-            <input type="submit" value="Find Specials" className="btn-primary"/>
-          </form>
+        <div className="container border-styling offset-md-4 col-4 search-bar">
+          <div className="App">
+            <form onSubmit={this.handleSubmit} className="search-form">
+              <label className="search-label">
+                Location: (City, State or Zip)
+                <input type="text" className="locale" name="locale" onChange={this.handleChange}/>
+              </label>     
+              <select name="day" onChange={this.handleChange}>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+              <br/> 
+              <input type="submit" value="Find Specials" className="btn-light"/>
+            </form>
+          </div>
         </div>
         <br/>
         <br/>
@@ -87,7 +89,9 @@ class Home extends Component {
             )}
           </div>
         ) : (
-          <h3 className="offset-md-4">Enter a zip code and select a day to find your specials</h3>
+          <div className="card">
+            <h3 className="text-dark offset-md-4">Enter a zip code and select a day to find your specials</h3>
+          </div>
         )}
         </div>
       </div>

@@ -6,11 +6,15 @@
   margin-left: 0%;
 }
 body {
-  /* background-image: url("./Images/background.jpg"); */
-  background-color: #AFAFAF
+  background-image: url("./Images/newBackground.jpg");
+  background-size: 110%;
+  /* background-color: #AFAFAF */
 }
 #topBarBackground {
-  background-color: #757575;
+  background-color: #1d1d1d;
+  margin: 0;
+  border-style: none none groove none;
+  border-width: 2.5px;
 }
 .button-to-bottom {
   position: relative;
@@ -36,4 +40,20 @@ body {
 }
 .search-label {
   font-weight: bold;
+  color: #c4c2cd;
+}
+.search-bar {
+  background-color: #1d1d1d;
+  /* padding-top: 0; */
+}
+.top-center-text {
+  color: #c4c2cd;
+}
+.border-styling {
+  border-style: none groove groove groove;
+  padding: 2%;
+  margin-top: -0.15%;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  z-index: 10;
 }
