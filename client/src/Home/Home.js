@@ -38,13 +38,14 @@ class Home extends Component {
     );
     console.log(this.state);
   }
+  
   login() {
     this.props.auth.login();
   }
   render() {
     return (
       <div>
-        <div className="App">
+        <div className="App offset-md-4">
           <form onSubmit={this.handleSubmit} className="search-form">
             <label className="search-label">
               Location: (City, State or Zip)
@@ -63,25 +64,30 @@ class Home extends Component {
             <input type="submit" value="Find Specials" className="btn-primary"/>
           </form>
         </div>
-        
+        <br/>
+        <br/>
         <div>
         {this.state.restaurants.length ? (
           <div>
             {this.state.restaurants.map(restaurant =>
               <div key={restaurant._id}>
                 <div className="card card-margin">
-                <div className="card-header heading-text">{restaurant.nickname}
+                <div className="card-header heading-text">{restaurant.restaurantName}
                 </div>
                 <div className="row">
                   <h3 className="col-6 card-text">{restaurant.description}</h3>
                   <h3 className="col-2 card-text">Price: ${restaurant.price}</h3>
+                </div>
+                <div className="row">
+                  <h3 className="col-6 card-text">{restaurant.address}</h3>
+                  <h3 className="col-2 card-text">{restaurant.city}</h3>
                 </div>
                 </div>
               </div>
             )}
           </div>
         ) : (
-          <h3 className="offset-md-3">Enter a zip code and select a day to find your specials</h3>
+          <h3 className="offset-md-4">Enter a zip code and select a day to find your specials</h3>
         )}
         </div>
       </div>

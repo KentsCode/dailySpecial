@@ -78,40 +78,6 @@ class App extends Component {
             {this.props.children}
           </div>
         </div>
-        {/* <div>
-        <div className="App">
-          <form onSubmit={this.handleSubmit} className="search-form">
-            <label className="search-label">
-              Location: (City, State or Zip)
-              <input type="text" className="locale" name="locale" onChange={this.handleChange}/>
-            </label>     
-            <select name="day" onChange={this.handleChange}>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
-            </select>
-            <br/> 
-            <input type="submit" value="Find Specials" className="btn-primary"/>
-          </form>
-        </div>
-        
-        <div>
-          <div className="card card-margin">
-            <div className="card-header heading-text">Restaurant Name</div>
-            <div className="row">
-              <h5 className="col-7 card-text">Special</h5>
-              <div className="col-1 card-text">Price</div>
-              <div className="col-4">
-                <img src={require("./Images/logo.png")} className="img-rounded img-responsive small-image" id="Panel_Image" alt="didnt load"/>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
       </div>
     );
   }

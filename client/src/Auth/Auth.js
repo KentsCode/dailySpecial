@@ -31,7 +31,7 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/home');
+        history.replace('/profile');
       } else if (err) {
         history.replace('/home');
         console.log(err);

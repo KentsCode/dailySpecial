@@ -12,6 +12,10 @@ class createSpecial extends React.Component {
             weekday: '', 
             description: '', 
             price: '',
+            restaurantName: '',
+            city: '',
+            address: '',
+            mySpecials: {}
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,42 +36,62 @@ class createSpecial extends React.Component {
           this.setState({nickname: userProfile.nickname});
         }
         //Above gets profile nickname and stores it in the background.
-        //Gets the users current specials.
-        axios.get('http://localhost:3001/api/mySpecials/:nickname', {
+        //gets the restaurant name and address and stores it in state
+        axios.get('http://localhost:3001/api/findAccount/:nickname', {
             params: {
                 nickname: userProfile.nickname
             }
         })
-            .then(function(response) {
-                console.log("from axios in create special page ",response.data[0]);
-                //!!!!!!Add code to set state of Monday-Sunday
-                for (var i = 0; i < response.data.length; i++ ) {
-                    //var day = response.data[i].weekday;
-                    //console.log( day,response.data[i].description, response.data[i].price );
-                    //this.setState({day: response.data[i] }) //set state of day for each part of loop.
-                    //console.log(this.state.day);
-                }
+            .then((response) => { 
+                
+                this.setState({restaurantName: response.data[0].restaurantName, city: response.data[0].city, address: response.data[0].streetAddress});
+                console.log("restaurantName",this.state.address);
+            })
+            //.then(this.getSpecials())
+        
+    }
+    componentDidMount() {
+        this.getSpecials();
+      }
+    getSpecials= () =>{
+        //Gets the users current specials.
+        axios.get('http://localhost:3001/api/mySpecials/:nickname', {
+            params: {
+                nickname: this.state.nickname
+            }
+        })
+            .then((response) => {
+                this.setState({mySpecials: response.data})
+                console.log("MySpecials",this.state.mySpecials)
                 
             }).catch(function (error) {
                 console.log(error);
             });
         //console.log("from state: " + this.state.profile);
     }
-
+    
+    deleteSpecial = id => {
+        axios.delete('http://localhost:3001/api/delete/:id', {
+          params: {id: id}
+        })
+        .then(res => this.getSpecials())
+      }
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
         //console.log(event.target.value);
     }
     handleSubmit(event) {
         event.preventDefault();
-        //console.log("the special for " + this.state.weekday + " is " + this.state.description + " for $" + this.state.price);
-        //console.log(this.state.nickname);
         axios.post('http://localhost:3001/api/regularSpecial', {
             nickname: this.state.nickname,
             weekday: this.state.weekday,
             description: this.state.description,
-            price: this.state.price
-        })  
+            price: this.state.price,
+            city: this.state.city,
+            address: this.state.address,
+            restaurantName: this.state.restaurantName
+        }) 
+        .then(res => this.getSpecials())
     }
 
     render() {
@@ -104,57 +128,33 @@ class createSpecial extends React.Component {
                     </form>
                 </div>
                 <div className="container">
-                    <div className="row">
-                        <div className="col-1 "> 
-                            <p>Monday</p>
+                    {this.state.mySpecials.length ? (
+                        <div>
+                            {this.state.mySpecials.map(special =>
+                                <div key={special._id}>
+                                    <div className="card card-margin">
+                                        <div className="card-header heading-text">{special.weekday}
+                                        </div>
+                                        <div className="row">
+                                            <h3 className="col-6 card-text">{special.description}</h3>
+                                            <h3 className="col-2 card-text">Price: ${special.price}</h3>
+                                            <button onClick={() => this.deleteSpecial(special._id)} >Delete</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            )}
                         </div>
-                        <div className="col-1 "> 
-                            <p>Tuesday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Wednesday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Thursday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Friday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Saturday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Sunday</p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-1 Monday">
-                            <p>Monday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Tuesday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            {/* {this.state.weekday.wednesday} */}
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Thursday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Friday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Saturday</p>
-                        </div>
-                        <div className="col-1 "> 
-                            <p>Sunday</p>
-                        </div>
-                    </div>
+                            ) : (
+                                <h3 className="offset-md-4">Enter a zip code and select a day to find your specials</h3>
+                    )}
                 </div>
             </div>
+            
         );
     }
 
 }
 
 export default createSpecial;
+

@@ -20,7 +20,7 @@ module.exports = {
                 .then(function (responseArray) {
                     console.log("next then...",responseArray)
                     db.regularSpecial
-                    .find({nickname: responseArray})
+                    .find({nickname: responseArray, weekday: req.query.day})
                         .then(dbModel => res.json(dbModel))}
                 )
                 //.then(dbModel => res.json(dbModel))
@@ -31,12 +31,20 @@ module.exports = {
     createRegularSpecial: function(req, res) {
         //console.log("Controller.Create fired!" + JSON.stringify(req));
         db.regularSpecial
-            .create(req);
+            .create(req)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     },
     createAccount: function(req, res) {
         //console.log("ControllerFired! " + JSON.stringify(req));
         db.accountSchema
             .create(req);
+    },
+    findAccount: function(req, res) {
+        db.accountSchema
+            .find({nickname: req.query.nickname})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     },
     venueLogin: function(req, res) {
         console.log("Controller Fired: venueLogin" + req);
@@ -47,11 +55,18 @@ module.exports = {
             //.then(console.log("venue Search" + res));
     },
     mySpecials: function(req, res) {
-        console.log("finding my specials.", res)
+        console.log("finding my specials.", req.query)
         db.regularSpecial
-            .find({nickname: "kentmbox42"})
-            .then(dbModel => res.json(dbModel));
-            //.catch(err => res.status(422).json(err));
+            .find({nickname: req.query.nickname})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
             //.then(res.send(returnedSpecials));
+    },
+    delete: function(req, res) {
+        console.log(req.query.id);
+        db.regularSpecial
+            .findByIdAndRemove({_id: req.query.id})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     }
 }
