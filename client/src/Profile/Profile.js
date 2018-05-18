@@ -61,8 +61,9 @@ class Profile extends Component {
     return (
       <div className="container">
         <div className="profile-area">
-          <h1 className="text-light">Welcome {profile.name}.</h1>
-          <Panel className="panel-dark text-light" header="Profile">
+          
+          <Panel className="panel-dark text-light" header="">
+            <h1 className="text-light">Welcome {profile.name}.</h1>
             <div className="transparent-background">
               <div className="row">
                 <img src={profile.picture} alt="profile" />
@@ -81,7 +82,7 @@ class Profile extends Component {
                 
                   <form onSubmit={this.handleSubmit} className="accountSubmit">
                   <div className="row">
-                    <div className="col-5">
+                    <div className="col-6">
                       <label>Restaurant Name
                           <input type="text" className="restaurantNameInput" name="restaurantName" onChange={this.handleChange}/>
                       </label>
@@ -90,8 +91,7 @@ class Profile extends Component {
                           <input type="text" className="streetAddressInput" name="streetAddress" onChange={this.handleChange}/>
                       </label>
                     </div>
-                    <div className="col-5">
-                      <br />
+                    <div className="col-6">
                       <label>City
                           <input type="text" className="cityInput" name="city" onChange={this.handleChange}/>
                       </label>

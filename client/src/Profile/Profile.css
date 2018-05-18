@@ -1,10 +1,12 @@
-.profile-area img {
+.profile-area {
   max-width: 150px;
   margin-bottom: 20px;
+  margin-top: 5%;
 }
 
 .panel-body h3 {
   margin-top: 0;
+  padding: 25px;
 }
 .panel-dark {
   background-color: #1d1d1d;
