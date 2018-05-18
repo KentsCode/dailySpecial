@@ -23,7 +23,7 @@ class Home extends Component {
     event.preventDefault();
     console.log('Submit went here!  Day is ' + this.state.day + '  Locale: ' + this.state.locale);
     fetch(
-      axios.get("http://localhost:3001/api/search", {
+      axios.get("/api/search", {
         params: {
           locale: this.state.locale,
           day: this.state.day

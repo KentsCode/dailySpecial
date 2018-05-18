@@ -37,7 +37,7 @@ class createSpecial extends React.Component {
         }
         //Above gets profile nickname and stores it in the background.
         //gets the restaurant name and address and stores it in state
-        axios.get('http://localhost:3001/api/findAccount/:nickname', {
+        axios.get('/api/findAccount/:nickname', {
             params: {
                 nickname: userProfile.nickname
             }
@@ -55,7 +55,7 @@ class createSpecial extends React.Component {
       }
     getSpecials= () =>{
         //Gets the users current specials.
-        axios.get('http://localhost:3001/api/mySpecials/:nickname', {
+        axios.get('/api/mySpecials/:nickname', {
             params: {
                 nickname: this.state.nickname
             }
@@ -71,7 +71,7 @@ class createSpecial extends React.Component {
     }
     
     deleteSpecial = id => {
-        axios.delete('http://localhost:3001/api/delete/:id', {
+        axios.delete('/api/delete/:id', {
           params: {id: id}
         })
         .then(res => this.getSpecials())
@@ -82,7 +82,7 @@ class createSpecial extends React.Component {
     }
     handleSubmit(event) {
         event.preventDefault();
-        axios.post('http://localhost:3001/api/regularSpecial', {
+        axios.post('/api/regularSpecial', {
             nickname: this.state.nickname,
             weekday: this.state.weekday,
             description: this.state.description,

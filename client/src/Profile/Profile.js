@@ -43,7 +43,7 @@ class Profile extends Component {
   handleSubmit(event) {
     console.log("submitting");
     event.preventDefault();
-    axios.post('http://localhost:3001/api/account', {
+    axios.post('/api/account', {
         restaurantName: this.state.restaurantName,
         streetAddress: this.state.streetAddress,
         city: this.state.city,
