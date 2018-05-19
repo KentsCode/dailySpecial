@@ -83,31 +83,31 @@ class Profile extends Component {
                   <form onSubmit={this.handleSubmit} className="accountSubmit">
                   <div className="row">
                     <div className="col-6">
-                      <label>Restaurant Name
-                          <input type="text" className="restaurantNameInput text-dark" name="restaurantName" onChange={this.handleChange}/>
+                      <label className="col-form-label">Restaurant Name
+                          <input type="text" className="restaurantNameInput text-dark form-control" name="restaurantName" onChange={this.handleChange}/>
                       </label>
                       <br />
-                      <label>Street Address
-                          <input type="text" className="streetAddressInput text-dark" name="streetAddress" onChange={this.handleChange}/>
+                      <label className="col-form-label">Street Address
+                          <input type="text" className="streetAddressInput text-dark form-control" name="streetAddress" onChange={this.handleChange}/>
                       </label>
                     </div>
                     <div className="col-6">
-                      <label>City
-                          <input type="text" className="cityInput text-dark" name="city" onChange={this.handleChange}/>
+                      <label className="col-form-label">City
+                          <input type="text" className="cityInput text-dark form-control" name="city" onChange={this.handleChange}/>
                       </label>
                       <br />
-                      <label>State
-                          <input type="text" className="stateInput text-dark" name="state" onChange={this.handleChange}/>
+                      <label className="col-form-label">State
+                          <input type="text" className="stateInput text-dark form-control" name="state" onChange={this.handleChange}/>
                       </label>
                       <br />
-                      <label>Zip
-                          <input type="text" className="zipInput text-dark" name="zip" onChange={this.handleChange}/>
+                      <label className="col-form-label">Zip
+                          <input type="text" className="zipInput text-dark form-control" name="zip" onChange={this.handleChange}/>
                       </label>
                       <br />
                       <br />
                     </div>
                       <br />
-                      <button type="submit" className="btn-primary btn-margin" >Go to my specials</button>
+                      <button type="submit" className="btn-primary btn-margin btn" >Go to my specials</button>
                     </div>
                   </form>
               </div>

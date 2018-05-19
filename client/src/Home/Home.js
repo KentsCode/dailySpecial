@@ -48,9 +48,9 @@ class Home extends Component {
         <div className="container border-styling offset-md-4 col-4 search-bar">
           <div className="App">
             <form onSubmit={this.handleSubmit} className="search-form">
-              <label className="search-label">
+              <label className="search-label col-form-label">
                 Location: (Zip)
-                <input type="text" className="locale" name="locale" onChange={this.handleChange}/>
+                <input type="text" className="locale form-control" name="locale" onChange={this.handleChange}/>
               </label>     
               <select name="day" onChange={this.handleChange}>
                 <option value="Monday">Select Day</option>
@@ -63,7 +63,7 @@ class Home extends Component {
                 <option value="Sunday">Sunday</option>
               </select>
               {/* <br/>  */}
-              <input type="submit" value="Find Specials" className="btn-light"/>
+              <input type="submit" value="Find Specials" className="btn-light btn"/>
             </form>
           </div>
         </div>

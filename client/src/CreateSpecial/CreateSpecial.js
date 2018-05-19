@@ -102,7 +102,7 @@ class createSpecial extends React.Component {
                         <h1>Submit your specials here</h1>
                     </header>
                     <form onSubmit={this.handleSubmit} className="regularSpecialSubmit">
-                        <label>
+                        <label className="">
                             Select day of the week.
                             <select name="weekday" onChange={this.handleChange}>
                                 <option value="selectWeekday">Select Weekday</option>
