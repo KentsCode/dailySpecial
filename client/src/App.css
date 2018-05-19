@@ -36,7 +36,8 @@ body {
   margin-left: 75%;
 }
 .search-form {
-  /* text-align: center; */
+ text-align: center;
+ margin-top: -5%; 
 }
 .search-label {
   font-weight: bold;
