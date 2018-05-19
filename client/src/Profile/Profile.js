@@ -68,9 +68,9 @@ class Profile extends Component {
             <div className="transparent-background">
               <div className="row">
                 <img src={profile.picture} alt="profile" />
-                <div style="padding-left: 30px;">
+                <div>
                   <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
-                  <h3 style="padding: 0px;">{profile.nickname}</h3>
+                  <h3>{profile.nickname}</h3>
                 </div>
               </div>
               {/* Above is info from Auth0. Below is submit form. Nickname key is auto-added */}
