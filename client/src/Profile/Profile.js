@@ -92,11 +92,12 @@ class Profile extends Component {
                           <input type="text" className="streetAddressInput text-dark form-control" name="streetAddress" onChange={this.handleChange}/>
                       </label>
                     </div>
-                    <div className="col-6">
+                    
                       <label className="col-form-label">City
                           <input type="text" className="cityInput text-dark form-control" name="city" onChange={this.handleChange}/>
                       </label>
                       <br />
+                    <div className="col-6">
                       <label className="col-form-label">State
                           <input type="text" className="stateInput text-dark form-control" name="state" onChange={this.handleChange}/>
                       </label>
@@ -106,9 +107,10 @@ class Profile extends Component {
                       </label>
                       <br />
                       <br />
-                    </div>
+                    
                       <br />
-                      <button type="submit" className="btn-primary btn-margin btn" >Go to my specials</button>
+                      <button type="submit" className="btn-danger btn-margin btn" >Go to my specials</button>
+                    </div>
                     </div>
                   </form>
               </div>
