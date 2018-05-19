@@ -51,7 +51,8 @@ class Home extends Component {
               <label className="search-label col-form-label">
                 Location: (Zip)
                 <input type="text" className="locale form-control" name="locale" onChange={this.handleChange}/>
-              </label>     
+              </label>  
+              <br />   
               <select name="day" onChange={this.handleChange}>
                 <option value="Monday">Select Day</option>
                 <option value="Monday">Monday</option>
