@@ -84,24 +84,24 @@ class Profile extends Component {
                   <div className="row">
                     <div className="col-6">
                       <label>Restaurant Name
-                          <input type="text" className="restaurantNameInput" name="restaurantName" onChange={this.handleChange}/>
+                          <input type="text" className="restaurantNameInput text-dark" name="restaurantName" onChange={this.handleChange}/>
                       </label>
                       <br />
                       <label>Street Address
-                          <input type="text" className="streetAddressInput" name="streetAddress" onChange={this.handleChange}/>
+                          <input type="text" className="streetAddressInput text-dark" name="streetAddress" onChange={this.handleChange}/>
                       </label>
                     </div>
                     <div className="col-6">
                       <label>City
-                          <input type="text" className="cityInput" name="city" onChange={this.handleChange}/>
+                          <input type="text" className="cityInput text-dark" name="city" onChange={this.handleChange}/>
                       </label>
                       <br />
                       <label>State
-                          <input type="text" className="stateInput" name="state" onChange={this.handleChange}/>
+                          <input type="text" className="stateInput text-dark" name="state" onChange={this.handleChange}/>
                       </label>
                       <br />
                       <label>Zip
-                          <input type="text" className="zipInput" name="zip" onChange={this.handleChange}/>
+                          <input type="text" className="zipInput text-dark" name="zip" onChange={this.handleChange}/>
                       </label>
                       <br />
                       <br />

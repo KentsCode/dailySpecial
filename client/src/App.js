@@ -29,7 +29,7 @@ class App extends Component {
               <img id="cornerLogo" src={require("./Images/logo.png")} alt="daily special logo"/>
             </Navbar.Header>
             <Navbar.Header className="col-5">
-              <h3 className="top-center-text">Your Specials For (Weekday)</h3>
+              <h3 className="top-center-text">Find the best deal of the day right here!</h3>
             </Navbar.Header>
             <Navbar.Header className="col-2">
                 {/* <Button
