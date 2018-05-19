@@ -61,3 +61,6 @@ body {
 .pad-left {
   padding-left: 7%;
 }
+.no-top-margin {
+  margin-top: -3%;
+}

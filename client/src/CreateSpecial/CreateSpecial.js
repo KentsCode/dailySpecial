@@ -99,7 +99,7 @@ class createSpecial extends React.Component {
             <div>
                 <div className="border-styling text-light search-bar offset-md-3 col-6 pad-left">
                     <header>
-                        <h1>Submit your specials here</h1>
+                        <h1 className="no-top-margin">Submit your specials here</h1>
                     </header>
                     <form onSubmit={this.handleSubmit} className="regularSpecialSubmit">
                         <label className="">
