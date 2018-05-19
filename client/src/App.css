@@ -58,3 +58,6 @@ body {
   border-bottom-right-radius: 50% 20%;
   z-index: 10;
 }
+.pad-left {
+  padding-left: 7%;
+}

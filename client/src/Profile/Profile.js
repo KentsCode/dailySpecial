@@ -105,6 +105,7 @@ class Profile extends Component {
                           <input type="text" className="zipInput text-dark form-control" name="zip" onChange={this.handleChange}/>
                       </label>
                       <br />
+                      <br />
                       <button type="submit" className="btn-danger btn-margin btn" >Go to my specials</button>
                     </div>
                     </div>

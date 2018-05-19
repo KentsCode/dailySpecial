@@ -76,16 +76,18 @@ class Home extends Component {
             {this.state.restaurants.map(restaurant =>
               <div key={restaurant._id}>
                 <div className="card card-margin">
-                <div className="card-header heading-text">{restaurant.restaurantName}
-                </div>
-                <div className="row">
-                  <h3 className="col-6 card-text">{restaurant.description}</h3>
-                  <h3 className="col-2 card-text">Price: ${restaurant.price}</h3>
-                </div>
-                <div className="row">
-                  <h3 className="col-6 card-text">{restaurant.address}</h3>
-                  <h3 className="col-2 card-text">{restaurant.city}</h3>
-                </div>
+                  <div className="card-header text-white bg-dark mb-3 heading-text">{restaurant.restaurantName}
+                  </div>
+                  <div class="card-body">
+                    <div className="row">
+                      <h3 className="col-6 card-text">{restaurant.description}</h3>
+                      <h3 className="col-2 card-text">Price: ${restaurant.price}</h3>
+                    </div>
+                    <div className="row">
+                      <h3 className="col-6 card-text">{restaurant.address}</h3>
+                      <h3 className="col-2 card-text">{restaurant.city}</h3>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

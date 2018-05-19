@@ -97,14 +97,14 @@ class createSpecial extends React.Component {
     render() {
         return (
             <div>
-                <div className="card offset-md-3 col-6">
+                <div className="border-styling text-light search-bar offset-md-3 col-6 pad-left">
                     <header>
                         <h1>Submit your specials here</h1>
                     </header>
                     <form onSubmit={this.handleSubmit} className="regularSpecialSubmit">
                         <label className="">
                             Select day of the week.
-                            <select name="weekday" onChange={this.handleChange}>
+                            <select className="text-dark" name="weekday" onChange={this.handleChange}>
                                 <option value="selectWeekday">Select Weekday</option>
                                 <option value="Monday">Monday</option>
                                 <option value="Tuesday">Tuesday</option>
@@ -117,11 +117,11 @@ class createSpecial extends React.Component {
                         </label>
                         <br />
                         <label>Describe your special here.
-                            <input type="text" className="descriptionInput" name="description" onChange={this.handleChange}/>
+                            <input type="text" className="descriptionInput text-dark" name="description" onChange={this.handleChange}/>
                         </label>
                         <br />
                         <label>Enter the price (in USD) of the special here. No $ signs.  
-                            <input type="text" className="priceInput" name="price" onChange={this.handleChange}/>
+                            <input type="text" className="priceInput text-dark" name="price" onChange={this.handleChange}/>
                         </label>
                         <br />
                         <input type="submit" value="Submit Special" className="btn-primary"/>
@@ -133,12 +133,12 @@ class createSpecial extends React.Component {
                             {this.state.mySpecials.map(special =>
                                 <div key={special._id}>
                                     <div className="card card-margin">
-                                        <div className="card-header heading-text">{special.weekday}
+                                        <div className="card-header text-white bg-dark mb-3 heading-text">{special.weekday}
                                         </div>
                                         <div className="row">
                                             <h3 className="col-6 card-text">{special.description}</h3>
                                             <h3 className="col-2 card-text">Price: ${special.price}</h3>
-                                            <button onClick={() => this.deleteSpecial(special._id)} >Delete</button>
+                                            <button className="btn btn-dark" onClick={() => this.deleteSpecial(special._id)} >Delete</button>
                                         </div>
 
                                     </div>
