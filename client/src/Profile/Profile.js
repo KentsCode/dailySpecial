@@ -106,7 +106,7 @@ class Profile extends Component {
                       </label>
                       <br />
                       <br />
-                      <button type="submit" className="btn-danger btn-margin btn" >Go to my specials</button>
+                      <button type="submit" className="gray-button text-light btn-margin btn" >Go to my specials</button>
                     </div>
                     </div>
                   </form>

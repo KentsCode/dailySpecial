@@ -124,7 +124,7 @@ class createSpecial extends React.Component {
                             <input type="text" className="priceInput text-dark" name="price" onChange={this.handleChange}/>
                         </label>
                         <br />
-                        <input type="submit" value="Submit Special" className="btn-primary"/>
+                        <input type="submit" value="Submit Special" className="btn gray-button text-light btn-margin"/>
                     </form>
                 </div>
                 <div className="container">

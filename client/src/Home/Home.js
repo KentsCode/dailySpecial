@@ -64,7 +64,7 @@ class Home extends Component {
                 <option value="Sunday">Sunday</option>
               </select>
               {/* <br/>  */}
-              <input type="submit" value="Find Specials" className="btn-light btn"/>
+              <input type="submit" value="Find Specials" className="text-light gray-button btn"/>
             </form>
           </div>
         </div>

@@ -43,7 +43,7 @@ class App extends Component {
                   !isAuthenticated() && (
                       <Button
                         // bsStyle="light"
-                        className="btn-margin button-to-bottom"
+                        className="btn-margin shadow-button button-to-bottom"
                         onClick={this.login.bind(this)}
                       >
                         Venue Log In
@@ -54,7 +54,7 @@ class App extends Component {
                   isAuthenticated() && (
                       <Button
                         //bsStyle="light"
-                        className="btn-margin"
+                        className="btn-margin shadow-button"
                         onClick={this.goTo.bind(this, 'profile')}
                       >
                         Profile
@@ -65,7 +65,7 @@ class App extends Component {
                   isAuthenticated() && (
                       <Button
                         //bsStyle="light"
-                        className="btn-margin"
+                        className="btn-margin shadow-button"
                         onClick={this.logout.bind(this)}
                       >
                         Venue Log Out

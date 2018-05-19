@@ -64,3 +64,11 @@ body {
 .no-top-margin {
   margin-top: -3%;
 }
+.gray-button {
+  background-color: gray;
+  border: solid 2px white;
+}
+.shadow-button {
+  box-shadow: 0 0 0 2px white,
+                inset 0 0 0 2px #1d1d1d;
+}
