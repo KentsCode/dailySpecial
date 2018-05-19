@@ -49,10 +49,11 @@ class Home extends Component {
           <div className="App">
             <form onSubmit={this.handleSubmit} className="search-form">
               <label className="search-label">
-                Location: (City, State or Zip)
+                Location: (Zip)
                 <input type="text" className="locale" name="locale" onChange={this.handleChange}/>
               </label>     
               <select name="day" onChange={this.handleChange}>
+                <option value="Monday">Select Day</option>
                 <option value="Monday">Monday</option>
                 <option value="Tuesday">Tuesday</option>
                 <option value="Wednesday">Wednesday</option>
