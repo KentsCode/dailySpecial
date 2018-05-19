@@ -69,6 +69,6 @@ body {
   border: solid 2px white;
 }
 .shadow-button {
-  box-shadow: 0 0 0 2px white,
+  box-shadow: 0 0 0 1px white,
                 inset 0 0 0 2px #1d1d1d;
 }

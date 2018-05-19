@@ -93,7 +93,7 @@ class Home extends Component {
             )}
           </div>
         ) : (
-          <div className="card">
+          <div className="card col-6 offset-md-3">
             <h3 className="text-dark offset-md-4 col-4">Enter a zip code and select a day to find your specials</h3>
           </div>
         )}
