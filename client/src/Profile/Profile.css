@@ -1,9 +1,10 @@
-.profile-area {
+.profile-area img {
   max-width: 150px;
   margin-bottom: 20px;
+}
+.profile-area {
   margin-top: 5%;
 }
-
 .panel-body h3 {
   margin-top: 0;
   padding: 25px;
