@@ -63,6 +63,7 @@ class Profile extends Component {
         <div className="profile-area">
           
           <Panel className="panel-dark text-light" header="">
+          <div className="panel-body-margin">
             <h1 className="text-light">Welcome {profile.name}.</h1>
             <div className="transparent-background">
               <div className="row">
@@ -81,7 +82,7 @@ class Profile extends Component {
                 </div>
                 
                   <form onSubmit={this.handleSubmit} className="accountSubmit">
-                  <div className="row">
+                  <div className="row form-group">
                     <div className="col-6">
                       <label className="col-form-label">Restaurant Name
                           <input type="text" className="restaurantNameInput text-dark form-control" name="restaurantName" onChange={this.handleChange}/>
@@ -112,6 +113,7 @@ class Profile extends Component {
                   </form>
               </div>
             </div>
+          </div>
           </Panel>
         </div>
       </div>
