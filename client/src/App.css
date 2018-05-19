@@ -37,7 +37,7 @@ body {
 }
 .search-form {
  text-align: center;
- margin-top: -5%; 
+ margin-top: -8%; 
 }
 .search-label {
   font-weight: bold;
@@ -71,4 +71,7 @@ body {
 .shadow-button {
   box-shadow: 0 0 0 1px white,
                 inset 0 0 0 2px #1d1d1d;
+}
+.centered-text {
+  text-align: center;
 }

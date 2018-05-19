@@ -52,7 +52,8 @@ class Home extends Component {
                 Location: (Zip)
                 <input type="text" className="locale form-control" name="locale" onChange={this.handleChange}/>
               </label>  
-              <br />   
+              <br /> 
+              <br />  
               <select name="day" onChange={this.handleChange}>
                 <option value="Monday">Select Day</option>
                 <option value="Monday">Monday</option>
@@ -94,7 +95,7 @@ class Home extends Component {
           </div>
         ) : (
           <div className="card col-6 offset-md-3">
-            <h3 className="text-dark offset-md-4 col-4">Enter a zip code and select a day to find your specials</h3>
+            <h3 className="text-dark offset-md-2 col-8 centered-text">Enter a zip code and select a day to find your specials</h3>
           </div>
         )}
         </div>
