@@ -23,9 +23,6 @@ module.exports = {
                     .find({nickname: responseArray, weekday: req.query.day})
                         .then(dbModel => res.json(dbModel))}
                 )
-                //.then(dbModel => res.json(dbModel))
-            //finish filling out your query to the database;
-            //use .get to put variables in the url and return results accordingly
     },
 
     createRegularSpecial: function(req, res) {
@@ -52,15 +49,13 @@ module.exports = {
             .findOne({username: "user", password: "pass"}, 'restaurantName', function(err, accountInfo) {
                 console.log("account info" + accountInfo);
             })
-            //.then(console.log("venue Search" + res));
     },
     mySpecials: function(req, res) {
         console.log("finding my specials.", req.query)
         db.regularSpecial
             .find({nickname: req.query.nickname})
             .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-            //.then(res.send(returnedSpecials));
+            .catch(err => res.status(422).json(err));   
     },
     delete: function(req, res) {
         console.log(req.query.id);

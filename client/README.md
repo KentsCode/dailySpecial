@@ -1,67 +1,26 @@
-# Auth0 React User Profile
+# DailySpecial
+## Easily Find Out What's on Special Near You!
 
-This sample demonstrates how to get a user's profile using Auth0 in a React application. The sample uses create-react-app.
+### The Sales Pitch
+This web application allows a representative of a restaurant to post their regular specials for each day of the week. Want to let potetntial customers know you have the best Taco Tuesday special? Want to boost business on a Monday by letting locals know you have $2 beers? Post your specials here!
 
-## Getting Started
+Users can enter their city and what day of the week they plan to go out and find what the daily specials near them are ahead of time without having to search each restaurant and clicking through each one. The best specials are now in one place in an easily searchable format.
 
-If you haven't already done so, [sign up](https://auth0.com) for your free Auth0 account and create a new client in the [dashboard](https://manage.auth0.com). Find the **domain** and **client ID** from the settings area and add the URL for your application to the **Allowed Callback URLs** box. If you are using the server provided by the create-react-app, that URL is `http://localhost:3000/callback`.
+### Technical Overview
+#### Built With
+MongoDB, Express Server, React, Node.JS, JavaScript, Bootstrap 
 
-Clone the repo or download it from the React quickstart page in Auth0's documentation. Install create-react-app globally and the dependencies for the app.
+#### Description of Function
+Daily Special is a web application built on the MERN Stack. A Mongo database with two collections are utilized to track restaurant owners accounts and a separate database for the specials which are tied together by a nickname. Mongoose is the ORM which sets up the schema. Express and NodeJS handle the server requests which consist of a location either by city, state or zip and a day of the week. Requests are then forwarded to the MongoDB accordingly and returned to REACT to be rendered into the DOM. 
 
-```bash
-npm install -g create-react-app
-cd 02-User-Profile
-npm install
-```
+### Future Todo's
+Make a way for a single login to handle multiple locations.
 
-> **Note:** If you are not using create-react-app but are using Babel, you need to add the `stage-0` preset.
+Allow limited user customizable styling of their specials.
 
-## Set the Client ID and Domain
+Allow users to upload a photo for their restaruant location. Probably by incorporating AWS buckets.
 
-If you download the sample from the quickstart page, it will come pre-populated with the **client ID** and **domain** for your application. If you clone the repo directly from Github, rename the `auth0-variables.js.example` file to `auth0-variables.js` and provide the **client ID** and **domain** there. This file is located in `src/Auth/`.
-
-## Run the Application
-
-The development server that comes with create-react-app can be used to serve the application.
-
-```bash
-npm start
-```
-
-The application will be served at `http://localhost:3000`.
-
-## Run the Application With Docker
-
-In order to run the example with docker you need to have `docker` installed.
-
-You also need to set the environment variables as explained [previously](#set-the-client-id-and-domain).
-
-Execute in command line `sh exec.sh` to run the Docker in Linux, or `.\exec.ps1` to run the Docker in Windows.
-
-## What is Auth0?
-
-Auth0 helps you to:
-
-* Add authentication with [multiple authentication sources](https://docs.auth0.com/identityproviders), either social like **Google, Facebook, Microsoft Account, LinkedIn, GitHub, Twitter, Box, Salesforce, amont others**, or enterprise identity systems like **Windows Azure AD, Google Apps, Active Directory, ADFS or any SAML Identity Provider**.
-* Add authentication through more traditional **[username/password databases](https://docs.auth0.com/mysql-connection-tutorial)**.
-* Add support for **[linking different user accounts](https://docs.auth0.com/link-accounts)** with the same user.
-* Support for generating signed [Json Web Tokens](https://docs.auth0.com/jwt) to call your APIs and **flow the user identity** securely.
-* Analytics of how, when and where users are logging in.
-* Pull data from other sources and add it to the user profile, through [JavaScript rules](https://docs.auth0.com/rules).
-
-## Create a Free Auth0 Account
-
-1. Go to [Auth0](https://auth0.com/signup) and click Sign Up.
-2. Use Google, GitHub or Microsoft Account to login.
-
-## Issue Reporting
-
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
-
-## Author
-
-[Auth0](https://auth0.com)
-
-## License
-
-This project is licensed under the MIT license. See the [LICENSE](LICENSE.txt) file for more info.
+### Author
+Kent Prettman 
+* [LinkedIn](https://www.linkedin.com/in/kenneth-prettman/)
+* [Visit DailySpecial](https://desolate-fjord-64516.herokuapp.com/home)
