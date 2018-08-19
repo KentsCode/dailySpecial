@@ -63,5 +63,19 @@ module.exports = {
             .findByIdAndRemove({_id: req.query.id})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    deleteRestaurant: function(req, res) {
+        console.log(req.query.id);
+        db.accountSchema
+            .findByIdAndRemove({_id: req.query.id})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    myAccounts: function(req,res) {
+        //console.log("from controller", req.query.nickname);
+        db.accountSchema
+            .find({nickname: req.query.nickname})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     }
 }

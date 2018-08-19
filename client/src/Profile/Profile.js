@@ -4,6 +4,9 @@ import './Profile.css';
 //I added these below. Above are from Auth0.
 import axios from 'axios';
 
+var storedNickname = '';
+//var retrievedRestaurants = [];
+
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +18,8 @@ class Profile extends Component {
         zip: '',
         username: '',
         password: '',
-        nickname: ''
+        nickname: '',
+        myRestaurants: {}
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,18 +32,49 @@ class Profile extends Component {
       getProfile((err, profile) => {
         this.setState({ profile });
         this.setState({nickname: profile.nickname});
+        storedNickname = this.state.nickname;
         //console.log("from state: " + this.state.nickname);
+        console.log("storednickname", storedNickname);
+        this.getRestaurants();
       });
     } else {
       this.setState({ profile: userProfile });
       console.log("from User Profile in else statement!  " + userProfile.nickname);
       this.setState({nickname: userProfile.nickname});
+      storedNickname = this.state.nickname;
+      console.log("storednickname", storedNickname);
+      this.getRestaurants();
     }
+  
   }
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
     console.log(event.target.value);
   }
+
+  getRestaurants = () => {
+    //Gets the users current specials.
+    axios.get('/api/myAccounts', {
+        params: {
+            nickname: storedNickname
+        }
+    })
+      .then((response) => {
+          this.setState({myRestaurants: response.data})
+          console.log("MyRestaurants",this.state.myRestaurants)
+          
+      }).catch(function (error) {
+          console.log(error);
+      });
+    //console.log("from state: " + this.state.profile);
+  }
+  deleteRestaurant = id => {
+    axios.delete('/api/deleteRestaurant/:id', {
+      params: {id: id}
+    })
+    .then(res => this.getRestaurants())
+}
+
   handleSubmit(event) {
     console.log("submitting");
     event.preventDefault();
@@ -110,6 +145,32 @@ class Profile extends Component {
                       </div>
                     </form>
                 </div>
+
+                <div className="row">
+                  <div className="container">
+                      {this.state.myRestaurants.length ? (
+                          <div>
+                              {this.state.myRestaurants.map(restaurant =>
+                                  <div key={restaurant._id}>
+                                      <div className="card card-margin">
+                                          <div className="card-header text-white bg-dark mb-3 heading-text">{restaurant.streetAddress}
+                                          </div>
+                                          <div className="row">
+                                              <h3 className="col-6 card-text">{restaurant.city}</h3>
+                                              <h3 className="col-2 card-text">{restaurant.zip}</h3>
+                                              <button className="btn btn-dark" onClick={() => this.deleteRestaurant(restaurant._id)} >Delete</button>
+                                          </div>
+
+                                      </div>
+                                  </div>
+                              )}
+                          </div>
+                              ) : (
+                                  <h3 className="">Welcome to DailySpecial! Enter the address of your restaurant to get started.</h3>
+                      )}
+                  </div>
+                </div>       
+
               </div>
             </div>
           </Panel>

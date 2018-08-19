@@ -20,3 +20,6 @@
 .transparent-background {
   opacity: 50%;
 }
+.card-text {
+  color: #1d1d1d;
+}

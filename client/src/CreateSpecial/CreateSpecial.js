@@ -21,7 +21,7 @@ class createSpecial extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentWillMount() {
-        //gets profile nickname and stores it in the background.
+        //gets profile nickname and stores it in the state.
         this.setState({ profile: {} });
         const { userProfile, getProfile } = this.props.auth;
         if (!userProfile) {
@@ -75,7 +75,7 @@ class createSpecial extends React.Component {
           params: {id: id}
         })
         .then(res => this.getSpecials())
-      }
+    }
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
         //console.log(event.target.value);
