@@ -23,22 +23,24 @@ class App extends Component {
 
     return (
       <div>
-        <div>
-          <Navbar id="topBarBackground" className="row">
-            <NavbarBrand className="col-4">
+        <div id="topBarBackground">
+          <Navbar className="row">
+            <div className="col-4">
               <img id="cornerLogo" src={require("./Images/logo.png")} alt="daily special logo"/>
-            </NavbarBrand>
-            <NavItem className="col-5">
+            </div>
+            <div className="col-5">
               <h3 className="top-center-text">Find the best deal of the day right here!</h3>
-            </NavItem>
-            <NavItem className="col-2">
-                {/* <Button
+            </div>
+            <div className="col-2">
+                {/* Do I really need this button? 
+                <Button
                   bsStyle="light"
                   className="btn-margin button-to-bottom"
                   onClick={this.goTo.bind(this, 'home')}
                 >
                   Home
                 </Button> */}
+                {/* login button below only shows up when not logged in. */}
                 {
                   !isAuthenticated() && (
                       <Button
@@ -50,6 +52,7 @@ class App extends Component {
                       </Button>
                     )
                 }
+                {/* Below buttons only show up when logged in. */}
                 {
                   isAuthenticated() && (
                       <Button
@@ -72,7 +75,7 @@ class App extends Component {
                       </Button>
                     )
                 }
-            </NavItem>
+            </div>
           </Navbar>
           <div className="container">
             {this.props.children}
