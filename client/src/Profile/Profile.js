@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
+import { Panel, ControlLabel, Glyphicon } from 'reactstrap';
 import './Profile.css';
 //I added these below. Above are from Auth0.
 import axios from 'axios';
@@ -153,10 +153,10 @@ class Profile extends Component {
                               {this.state.myRestaurants.map(restaurant =>
                                   <div key={restaurant._id}>
                                       <div className="card card-margin">
-                                          <div className="card-header text-white bg-dark mb-3 heading-text">{restaurant.streetAddress}
+                                          <div className="card-header text-white bg-dark mb-3 heading-text">{restaurant.city}
                                           </div>
                                           <div className="row">
-                                              <h3 className="col-6 card-text">{restaurant.city}</h3>
+                                              <h3 className="col-6 card-text">{restaurant.streetAddress}</h3>
                                               <h3 className="col-2 card-text">{restaurant.zip}</h3>
                                               <button className="btn btn-dark" onClick={() => this.deleteRestaurant(restaurant._id)} >Delete</button>
                                           </div>
@@ -166,7 +166,7 @@ class Profile extends Component {
                               )}
                           </div>
                               ) : (
-                                  <h3 className="">Welcome to DailySpecial! Enter the address of your restaurant to get started.</h3>
+                                  <h3 className="">Welcome to DailySpecial! To add a location enter the address of your restaurant.</h3>
                       )}
                   </div>
                 </div>       

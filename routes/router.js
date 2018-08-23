@@ -36,11 +36,11 @@ router.route("/api/mySpecials/:nickname")
     })
 router.delete('/api/delete/:id', function (req, res) {
     controller.delete(req, res);
-    console.log("trying to delete");
+    console.log("trying to delete special");
 })
 router.delete('/api/deleteRestaurant/:id', function (req, res) {
-    controller.delete(req, res);
-    console.log("trying to delete");
+    controller.deleteRestaurant(req, res);
+    console.log("trying to delete restaurant");
 })
 router.get('/api/myAccounts', function (req, res) {
     controller.myAccounts(req, res);

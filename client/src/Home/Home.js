@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import axios from 'axios';
+//import { Col } from 'react-bootstrap';
 
 class Home extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Home extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('Submit went here!  Day is ' + this.state.day + '  Locale: ' + this.state.locale);
+    console.log(this.state.locale, this.state.day);
     fetch(
       axios.get("/api/search", {
         params: {
@@ -38,7 +39,7 @@ class Home extends Component {
     );
     console.log(this.state);
   }
-  
+
   login() {
     this.props.auth.login();
   }
@@ -50,7 +51,7 @@ class Home extends Component {
             <form onSubmit={this.handleSubmit} className="search-form">
               <label className="search-label col-form-label">
                 Location: (Zip)
-                <input type="text" className="locale form-control" name="locale" onChange={this.handleChange}/>
+                <input type="text" className="locale form-control" name="locale" required="required" onChange={this.handleChange}/>
               </label>  
               <br /> 
               <br />  
@@ -78,18 +79,19 @@ class Home extends Component {
                 <div className="card card-margin">
                   <div className="card-header text-white bg-dark mb-3 heading-text">{restaurant.restaurantName}
                   </div>
-                  <div class="card-body">
+                  <div className="card-body">
                     <div className="row">
-                      <h3 className="col-6 card-text">{restaurant.description}</h3>
-                      <h3 className="col-2 card-text">Price: ${restaurant.price}</h3>
+                      <h3 className="col-sm-8 card-text">{restaurant.description}</h3>
+                      <h3 className="col-sm-4 card-text">Price: ${restaurant.price}</h3>
                     </div>
                     <div className="row">
-                      <h3 className="col-6 card-text">{restaurant.address}</h3>
-                      <h3 className="col-2 card-text">{restaurant.city}</h3>
+                      <h3 className="col-sm-6 card-text">{restaurant.address}</h3>
+                      <h3 className="col-sm-2 card-text">{restaurant.city}</h3>
                     </div>
                   </div>
                 </div>
               </div>
+              
             )}
           </div>
         ) : (

@@ -136,8 +136,8 @@ class createSpecial extends React.Component {
                                         <div className="card-header text-white bg-dark mb-3 heading-text">{special.weekday}
                                         </div>
                                         <div className="row">
-                                            <h3 className="col-6 card-text">{special.description}</h3>
-                                            <h3 className="col-2 card-text">Price: ${special.price}</h3>
+                                            <h3 className="col-6 card-text" required="required">{special.description}</h3>
+                                            <h3 className="col-2 card-text" required="required">Price: ${special.price}</h3>
                                             <button className="btn btn-dark" onClick={() => this.deleteSpecial(special._id)} >Delete</button>
                                         </div>
 

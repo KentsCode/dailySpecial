@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Navbar, NavbarBrand, NavItem, Button } from 'reactstrap';
 import './App.css';
 
 class App extends Component {
@@ -24,14 +24,14 @@ class App extends Component {
     return (
       <div>
         <div>
-          <Navbar fluid id="topBarBackground" className="row">
-            <Navbar.Header className="col-4">
+          <Navbar id="topBarBackground" className="row">
+            <NavbarBrand className="col-4">
               <img id="cornerLogo" src={require("./Images/logo.png")} alt="daily special logo"/>
-            </Navbar.Header>
-            <Navbar.Header className="col-5">
+            </NavbarBrand>
+            <NavItem className="col-5">
               <h3 className="top-center-text">Find the best deal of the day right here!</h3>
-            </Navbar.Header>
-            <Navbar.Header className="col-2">
+            </NavItem>
+            <NavItem className="col-2">
                 {/* <Button
                   bsStyle="light"
                   className="btn-margin button-to-bottom"
@@ -72,7 +72,7 @@ class App extends Component {
                       </Button>
                     )
                 }
-            </Navbar.Header>
+            </NavItem>
           </Navbar>
           <div className="container">
             {this.props.children}

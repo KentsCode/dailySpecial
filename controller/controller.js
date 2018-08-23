@@ -4,21 +4,18 @@ const db = require("../models");
 module.exports = {
     find: function(req, res) {
         console.log("from Controller !  ", req.query.locale, req.query.day);
-        
         db.accountSchema
             .find({zip: req.query.locale})
                 .then(function(response) {
                     let responseArray = [];
                     response.forEach(element => {
-                        //console.log("element logging",element.nickname);
-                        
-                        responseArray.push(element.nickname)
+                    responseArray.push(element.nickname)
                     });
                     console.log("response from then", responseArray);
                     return responseArray;
                 })
                 .then(function (responseArray) {
-                    console.log("next then...",responseArray)
+                    //console.log("next then...",responseArray)
                     db.regularSpecial
                     .find({nickname: responseArray, weekday: req.query.day})
                         .then(dbModel => res.json(dbModel))}
@@ -72,6 +69,7 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     myAccounts: function(req,res) {
+        //finds all restaurants associated with an account.
         //console.log("from controller", req.query.nickname);
         db.accountSchema
             .find({nickname: req.query.nickname})
