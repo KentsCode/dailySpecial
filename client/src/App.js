@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, NavItem, Button } from 'reactstrap';
+import { Navbar, Button } from 'reactstrap';
 import './App.css';
 
 class App extends Component {

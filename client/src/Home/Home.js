@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import axios from 'axios';
-//import { Col } from 'react-bootstrap';
+import { Row, Col, Card, CardColumns, CardBody, CardHeader } from 'reactstrap';
+
 
 class Home extends Component {
   constructor(props) {
@@ -73,27 +74,33 @@ class Home extends Component {
         <br/>
         <div>
         {this.state.restaurants.length ? (
-          <div>
+          <CardColumns>
             {this.state.restaurants.map(restaurant =>
-              <div key={restaurant._id}>
-                <div className="card card-margin">
-                  <div className="card-header text-white bg-dark mb-3 heading-text">{restaurant.restaurantName}
-                  </div>
-                  <div className="card-body">
-                    <div className="row">
-                      <h3 className="col-sm-8 card-text">{restaurant.description}</h3>
-                      <h3 className="col-sm-4 card-text">Price: ${restaurant.price}</h3>
-                    </div>
-                    <div className="row">
-                      <h3 className="col-sm-6 card-text">{restaurant.address}</h3>
-                      <h3 className="col-sm-2 card-text">{restaurant.city}</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Card key={restaurant._id} className="">
+                <CardHeader className="text-white bg-dark heading-text">{restaurant.restaurantName}
+                </CardHeader>
+                <CardBody>
+                  <Row>
+                    <Col sm="8">
+                      <h3 className="card-text">{restaurant.description}</h3>
+                    </Col>
+                    <Col sm="4">
+                      <h3 className="card-text">Price: ${restaurant.price}</h3>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col sm="7">
+                      <h3 className="card-text">{restaurant.address}</h3>
+                    </Col>
+                    <Col sm="5">
+                      <h3 className="card-text">{restaurant.city}</h3>
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
               
             )}
-          </div>
+          </CardColumns>
         ) : (
           <div className="card col-6 offset-md-3">
             <h3 className="text-dark offset-md-2 col-8 centered-text">Enter a zip code and select a day to find your specials</h3>
