@@ -2,7 +2,10 @@ import React from 'react';
 // import { Link } from "react-router-dom";
 import axios from 'axios';
 
+
 //toDos: Create calendar elements dynamically from array.
+
+const currentRestaurant = sessionStorage.getItem('currentRestaurant');
 
 class createSpecial extends React.Component {
     constructor(props) {
@@ -15,10 +18,12 @@ class createSpecial extends React.Component {
             restaurantName: '',
             city: '',
             address: '',
-            mySpecials: {}
+            mySpecials: {},
+            premiumPost: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
     componentWillMount() {
         //gets profile nickname and stores it in the state.
@@ -37,9 +42,9 @@ class createSpecial extends React.Component {
         }
         //Above gets profile nickname and stores it in the background.
         //gets the restaurant name and address and stores it in state
-        axios.get('/api/findAccount/:nickname', {
+        axios.get('/api/myRestaurant/:id', {
             params: {
-                nickname: userProfile.nickname
+                id: currentRestaurant
             }
         })
             .then((response) => { 
@@ -47,6 +52,16 @@ class createSpecial extends React.Component {
                 this.setState({restaurantName: response.data[0].restaurantName, city: response.data[0].city, address: response.data[0].streetAddress});
                 console.log("restaurantName",this.state.address);
             })
+        // axios.get('/api/findAccount/:nickname', {
+        //     params: {
+        //         nickname: userProfile.nickname
+        //     }
+        // })
+        //     .then((response) => { 
+                
+        //         this.setState({restaurantName: response.data[0].restaurantName, city: response.data[0].city, address: response.data[0].streetAddress});
+        //         console.log("restaurantName",this.state.address);
+        //     })
             //.then(this.getSpecials())
         
     }
@@ -89,9 +104,19 @@ class createSpecial extends React.Component {
             price: this.state.price,
             city: this.state.city,
             address: this.state.address,
-            restaurantName: this.state.restaurantName
+            restaurantName: this.state.restaurantName,
+            premiumPost: this.state.premiumPost
         }) 
         .then(res => this.getSpecials())
+    }
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
     }
 
     render() {
@@ -122,6 +147,11 @@ class createSpecial extends React.Component {
                         <br />
                         <label>Enter the price (in USD) of the special here. No $ signs.  
                             <input type="text" className="priceInput text-dark" name="price" onChange={this.handleChange}/>
+                        </label>
+                        <br />
+                        <label className="col-form-label">Would this to be a premium post for $5?
+                            <input type="checkbox" className="premiumPostInput text-dark form-control" 
+                            name="premiumPost" checked={this.state.premiumPost} onChange={this.handleInputChange}/>
                         </label>
                         <br />
                         <input type="submit" value="Submit Special" className="btn gray-button text-light btn-margin"/>

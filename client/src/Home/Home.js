@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Row, Col, Card, CardColumns, CardBody, CardHeader } from 'reactstrap';
+import { Row, Col, Card, CardColumns, CardBody, CardHeader, CardFooter } from 'reactstrap';
+import './Home.css';
+import './Home.scss';
 
 
 class Home extends Component {
@@ -33,7 +35,7 @@ class Home extends Component {
       }).then((response)=> {
         console.log("from home.js", response.data);
         this.setState({restaurants: response.data})
-        console.log(this.state);
+        console.log("response", this.state);
       } 
     )
       
@@ -45,6 +47,12 @@ class Home extends Component {
     this.props.auth.login();
   }
   render() {
+    //Delete?
+    // if (this.state.restaurants.premiumUser === true) {
+    //   var footer = <CardFooter> Premium User is True! </CardFooter>;
+    // }
+    var cardFooter = <CardFooter> You get a footer for paying premium! </CardFooter>
+    var notPremium = null;
     return (
       <div>
         <div className="container border-styling offset-md-4 col-4 search-bar">
@@ -52,9 +60,9 @@ class Home extends Component {
             <form onSubmit={this.handleSubmit} className="search-form">
               <label className="search-label col-form-label">
                 Location: (Zip)
-                <input type="text" className="locale form-control" name="locale" required="required" onChange={this.handleChange}/>
+                <input type="text" className="locale form-control" name="locale"  
+                onChange={this.handleChange}/>
               </label>  
-              <br /> 
               <br />  
               <select name="day" onChange={this.handleChange}>
                 <option value="Monday">Select Day</option>
@@ -72,7 +80,7 @@ class Home extends Component {
         </div>
         <br/>
         <br/>
-        <div>
+        <div className="card-section">
         {this.state.restaurants.length ? (
           <CardColumns>
             {this.state.restaurants.map(restaurant =>
@@ -97,6 +105,8 @@ class Home extends Component {
                     </Col>
                   </Row>
                 </CardBody>
+                  {/* Below code only works when premium is true. Use this for photos also */}
+                  {restaurant.premiumPost ? cardFooter : notPremium }
               </Card>
               
             )}

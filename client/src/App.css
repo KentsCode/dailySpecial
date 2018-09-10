@@ -8,7 +8,12 @@
 body {
   background-image: url("./Images/newBackground.jpg");
   background-size: 110%;
-  /* background-color: #AFAFAF */
+}
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
 }
 #topBarBackground {
   background-color: #1d1d1d;

@@ -3,7 +3,7 @@ const db = require("../models");
 //Methods are below.
 module.exports = {
     find: function(req, res) {
-        console.log("from Controller !  ", req.query.locale, req.query.day);
+        //console.log("from Controller !  ", req.query.locale, req.query.day);
         db.accountSchema
             .find({zip: req.query.locale})
                 .then(function(response) {
@@ -11,7 +11,7 @@ module.exports = {
                     response.forEach(element => {
                     responseArray.push(element.nickname)
                     });
-                    console.log("response from then", responseArray);
+                    //console.log("response from then", responseArray);
                     return responseArray;
                 })
                 .then(function (responseArray) {
@@ -41,28 +41,35 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     venueLogin: function(req, res) {
-        console.log("Controller Fired: venueLogin" + req);
+        //console.log("Controller Fired: venueLogin" + req);
         db.accountSchema
             .findOne({username: "user", password: "pass"}, 'restaurantName', function(err, accountInfo) {
-                console.log("account info" + accountInfo);
+                //console.log("account info" + accountInfo);
             })
     },
     mySpecials: function(req, res) {
-        console.log("finding my specials.", req.query)
+        //console.log("finding my specials.", req.query)
         db.regularSpecial
             .find({nickname: req.query.nickname})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));   
     },
+    myRestaurant: function(req, res) {
+        //console.log("finding my specials.", req.query)
+        db.accountSchema
+            .find({_id: req.query.id})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));   
+    },
     delete: function(req, res) {
-        console.log(req.query.id);
+        //console.log(req.query.id);
         db.regularSpecial
             .findByIdAndRemove({_id: req.query.id})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     deleteRestaurant: function(req, res) {
-        console.log(req.query.id);
+        //console.log(req.query.id);
         db.accountSchema
             .findByIdAndRemove({_id: req.query.id})
             .then(dbModel => res.json(dbModel))

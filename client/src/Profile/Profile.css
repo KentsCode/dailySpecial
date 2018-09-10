@@ -8,13 +8,13 @@
 .profile-area {
   margin-top: 5%;
 }
-.panel-body h3 {
+.card-body h3 {
   margin-top: 0;
 }
-.panel-body-margin {
+.card-body-margin {
   margin: 10px;
 }
-.panel-dark {
+.card-dark {
   background-color: #1d1d1d;
 }
 .transparent-background {

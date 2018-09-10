@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Panel, ControlLabel, Glyphicon } from 'reactstrap';
+import { Card } from 'reactstrap';
 import './Profile.css';
 //I added these below. Above are from Auth0.
 import axios from 'axios';
 
-var storedNickname = '';
+var storedNickname = sessionStorage.getItem('storedNickname');
 //var retrievedRestaurants = [];
 
 class Profile extends Component {
@@ -32,17 +32,21 @@ class Profile extends Component {
       getProfile((err, profile) => {
         this.setState({ profile });
         this.setState({nickname: profile.nickname});
-        storedNickname = this.state.nickname;
+        sessionStorage.setItem('storedNickname', profile.nickname);
+        storedNickname = profile.nickname;
+        //storedNickname = this.state.nickname;
         //console.log("from state: " + this.state.nickname);
-        console.log("storednickname", storedNickname);
+        //console.log("storednickname", storedNickname);
         this.getRestaurants();
       });
     } else {
       this.setState({ profile: userProfile });
       console.log("from User Profile in else statement!  " + userProfile.nickname);
       this.setState({nickname: userProfile.nickname});
-      storedNickname = this.state.nickname;
-      console.log("storednickname", storedNickname);
+      sessionStorage.setItem('storedNickname', userProfile.nickname);
+      storedNickname = userProfile.nickname;
+      //storedNickname = this.state.nickname;
+      //console.log("storednickname", storedNickname);
       this.getRestaurants();
     }
   
@@ -73,7 +77,15 @@ class Profile extends Component {
       params: {id: id}
     })
     .then(res => this.getRestaurants())
-}
+  }
+  selectRestaurant = id => {
+    console.log(id);
+    //console.log(this.state.myRestaurants);
+    sessionStorage.removeItem('currentRestaurant');
+    sessionStorage.setItem('currentRestaurant', id);
+    console.log('From Local Storage:', sessionStorage.getItem('currentRestaurant'));
+    this.props.history.push('/createSpecial');
+  }
 
   handleSubmit(event) {
     console.log("submitting");
@@ -88,7 +100,9 @@ class Profile extends Component {
         password: this.state.password,
         nickname: this.state.nickname
     });
-    this.props.history.push('/createSpecial');
+    //sessionStorage.removeItem('currentRestaurant');
+    //sessionStorage.setItem('currentRestaurant', id);
+    //this.props.history.push('/createSpecial');
   }
 
   render() {
@@ -96,14 +110,14 @@ class Profile extends Component {
     return (
       <div className="container">
         <div className="profile-area">
-          <Panel className="panel-dark text-light" header="">
-            <div className="panel-body-margin">
+          <Card className="card-dark text-light" header="">
+            <div className="card-body-margin">
               <h1 className="text-light">Welcome {profile.name}.</h1>
               <div className="transparent-background">
                 <div className="row">
                   <img src={profile.picture} alt="profile" />
                   <div>
-                    <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel>
+                    {/* <ControlLabel><Glyphicon glyph="user" /> Nickname</ControlLabel> */}
                     <h3>{profile.nickname}</h3>
                   </div>
                 </div>
@@ -139,11 +153,10 @@ class Profile extends Component {
                             <input type="text" className="zipInput text-dark form-control" name="zip" onChange={this.handleChange}/>
                         </label>
                         <br />
-                        <br />
                         <button type="submit" className="gray-button text-light btn-margin btn" >Go to my specials</button>
                       </div>
-                      </div>
-                    </form>
+                    </div>
+                  </form>
                 </div>
 
                 <div className="row">
@@ -158,7 +171,12 @@ class Profile extends Component {
                                           <div className="row">
                                               <h3 className="col-6 card-text">{restaurant.streetAddress}</h3>
                                               <h3 className="col-2 card-text">{restaurant.zip}</h3>
-                                              <button className="btn btn-dark" onClick={() => this.deleteRestaurant(restaurant._id)} >Delete</button>
+                                              <button className="btn btn-dark" onClick={() => 
+                                                this.deleteRestaurant(restaurant._id)} >Delete
+                                              </button>
+                                              <button className="btn btn-dark" onClick={() =>
+                                                this.selectRestaurant(restaurant._id)}> Select This Restaurant
+                                              </button>
                                           </div>
 
                                       </div>
@@ -173,7 +191,7 @@ class Profile extends Component {
 
               </div>
             </div>
-          </Panel>
+          </Card>
         </div>
       </div>
     );

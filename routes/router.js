@@ -5,11 +5,11 @@ const controller = require("../controller/controller")
 router.route("/api/search/")
     .get(function(req, res) {
         controller.find(req, res);
-        console.log("from router search ");
+        //console.log("from router search ");
     })
 
 router.post("/api/venueLogin", (req, res) => {
-    console.log("login! data received" + req.body);
+    //console.log("login! data received" + req.body);
     controller.venueLogin(JSON.stringify(req.body));
 })
 
@@ -22,29 +22,32 @@ router.route("/api/regularSpecial")
 router.route("/api/findAccount/:nickname")
     .get(function(req, res) {
         controller.findAccount(req, res);
-        console.log("findAccount fired!");
+        //console.log("findAccount fired!");
     })
 
 router.post("/api/account/", function (req, res) {
     //console.log(req.body);
     controller.createAccount(req.body);
 })
-router.route("/api/mySpecials/:nickname")
+router.route("/api/mySpecials/:restaurantName")
     .get(function (req, res) {
         controller.mySpecials(req, res);
-        console.log("from router  !!", req.query);
+        //console.log("from router  !!", req.query);
     })
 router.delete('/api/delete/:id', function (req, res) {
     controller.delete(req, res);
-    console.log("trying to delete special");
+    //console.log("trying to delete special");
 })
 router.delete('/api/deleteRestaurant/:id', function (req, res) {
     controller.deleteRestaurant(req, res);
-    console.log("trying to delete restaurant");
+    //console.log("trying to delete restaurant");
 })
 router.get('/api/myAccounts', function (req, res) {
     controller.myAccounts(req, res);
     //console.log("getting accounts from router", res);
+})
+router.get('/api/myRestaurant/:id', function (req, res) {
+    controller.myRestaurant(req, res);
 })
 
 module.exports = router;

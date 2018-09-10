@@ -9,7 +9,8 @@ const regularSpecialSchema = new Schema ({
     price: {type: Number, min: 0.01, max: 1000},
     restaurantName: {type: String, required: true},
     address: {type: String},
-    city: {type: String} 
+    city: {type: String},
+    premiumPost: {type: Boolean} 
 })
 
 const regularSpecial = mongoose.model("regularspecials", regularSpecialSchema);
